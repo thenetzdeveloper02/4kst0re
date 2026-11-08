@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --ios-bg: #070913;
+    --glass-surface: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.22);
+    --glass-blur: blur(28px) saturate(210%) brightness(108%);
+    --liquid-cyan: #00f2fe;
+    --liquid-blue: #4facfe;
+    --liquid-purple: #7928ca;
+    --liquid-emerald: #00f5a0;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.72);
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Kantumruy Pro', sans-serif;
+    background-color: var(--ios-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Glass Panels */
+.glass-container {
+    background: var(--glass-surface);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.6), 0 20px 45px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Clean Header */
+header {
+    background: rgba(15, 21, 38, 0.75);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img {
+    height: 40px;
+    border-radius: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: linear-gradient(120deg, #ffffff 40%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.btn-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.4), rgba(79, 172, 254, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: inset 0 1px 1px #fff, 0 6px 20px rgba(0, 242, 254, 0.25);
+    transition: all 0.25s ease;
+}
+
+.btn-glass:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 1px #fff, 0 10px 28px rgba(0, 242, 254, 0.45);
+}

@@ -1,0 +1,984 @@
+/* ==========================================================================
+   4K STORE - Apple HIG Admin Backoffice Theme System
+   Grounded in Apple Human Interface Guidelines & macOS Desktop Patterns
+   ========================================================================== */
+
+/* Base & Typography */
+.admin-storefront,
+.message-storefront {
+    min-height: 100vh;
+    background-color: var(--app-bg, #f5f5f7);
+    color: var(--app-label-primary, #1d1d1f);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Outfit", "Kantumruy Pro", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.admin-storefront .cyber-grid-lines,
+.message-storefront .cyber-grid-lines {
+    display: none !important;
+}
+
+/* ==========================================================================
+   1. macOS-Style Frosted Sidebar Navigation (Liquid Glass)
+   ========================================================================== */
+.admin-primary-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 14px;
+    background: var(--app-surface, rgba(255, 255, 255, 0.85));
+    backdrop-filter: var(--glass-blur, blur(28px) saturate(180%));
+    -webkit-backdrop-filter: var(--glass-blur, blur(28px) saturate(180%));
+    border-right: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    overflow-y: auto;
+    transition: background-color var(--duration-normal, 240ms) var(--ease-apple), border-color var(--duration-normal, 240ms);
+}
+
+/* Brand Emblem */
+.admin-primary-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 8px;
+    margin-bottom: 24px;
+    text-decoration: none;
+    color: var(--app-label-primary, #1d1d1f);
+    transition: opacity var(--duration-fast, 160ms);
+}
+
+.admin-primary-brand:hover {
+    opacity: 0.85;
+}
+
+.admin-primary-brand .brand-hologram-cube {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm, 10px);
+    overflow: hidden;
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.04));
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-primary-brand .brand-hologram-cube img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-primary-brand span {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-primary-brand small {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--app-accent, #0071e3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+}
+
+/* Section Labels */
+.admin-primary-label {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--app-label-tertiary, #86868b);
+    margin-bottom: 4px;
+}
+
+/* Nav Links */
+.admin-primary-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm, 10px);
+    color: var(--app-label-secondary, #6e6e73);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--duration-fast, 160ms) var(--ease-apple);
+    margin-bottom: 2px;
+}
+
+.admin-primary-nav-link i {
+    width: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: inherit;
+}
+
+.admin-primary-nav-link:hover {
+    color: var(--app-label-primary, #1d1d1f);
+    background: var(--app-surface-hover, rgba(0, 0, 0, 0.05));
+}
+
+.admin-primary-nav-link.is-active {
+    color: #ffffff !important;
+    background: var(--app-accent, #0071e3) !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+}
+
+/* Settings Subnav Tree */
+.admin-settings-subnav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 2px 0 10px 24px;
+    padding-left: 10px;
+    border-left: 1.5px solid var(--app-border, rgba(0, 0, 0, 0.08));
+}
+
+.admin-settings-link {
+    padding: 6px 10px;
+    border-radius: var(--radius-xs, 6px);
+    color: var(--app-label-secondary, #6e6e73);
+    font-size: 12.5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--duration-fast, 160ms);
+}
+
+.admin-settings-link:hover {
+    color: var(--app-label-primary, #1d1d1f);
+    background: var(--app-surface-hover, rgba(0, 0, 0, 0.04));
+}
+
+.admin-settings-link.is-active {
+    color: var(--app-accent, #0071e3);
+    background: var(--app-accent-surface, rgba(0, 113, 227, 0.08));
+    font-weight: 600;
+}
+
+/* Sidebar Logout */
+.admin-sidebar-logout {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+}
+
+.admin-sidebar-logout button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--radius-sm, 10px);
+    background: transparent;
+    color: var(--app-label-secondary, #6e6e73);
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--duration-fast, 160ms);
+}
+
+.admin-sidebar-logout button:hover {
+    color: var(--app-danger, #ff3b30);
+    background: var(--app-danger-bg, rgba(255, 59, 48, 0.1));
+}
+
+/* ==========================================================================
+   2. Main Layout Area
+   ========================================================================== */
+.admin-storefront .admin-dashboard-container,
+.message-storefront .dashboard-container {
+    width: min(1320px, calc(100vw - 290px));
+    max-width: none;
+    margin: 32px 24px 60px 274px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   3. Header Glass Banner (Apple Card Style)
+   ========================================================================== */
+.admin-storefront .admin-header-glass,
+.message-storefront .dashboard-header,
+.operations-header {
+    background: var(--app-surface-solid, #ffffff);
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    border-radius: var(--radius-xl, 24px);
+    box-shadow: var(--card-shadow, 0 4px 16px rgba(0, 0, 0, 0.04));
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    transition: background-color var(--duration-normal, 240ms), border-color var(--duration-normal, 240ms);
+}
+
+.admin-storefront .admin-header-glass h1,
+.admin-storefront .admin-header-glass h2,
+.message-storefront .dashboard-header h1,
+.message-storefront .dashboard-header h2,
+.operations-header h1 {
+    font-size: clamp(24px, 3vw, 32px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--app-label-primary, #1d1d1f) !important;
+    font-family: inherit !important;
+    margin: 4px 0 0;
+}
+
+.admin-storefront .section-tag,
+.message-storefront .dna-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill, 9999px);
+    background: var(--app-accent-surface, rgba(0, 113, 227, 0.08));
+    color: var(--app-accent, #0071e3);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(0, 113, 227, 0.12);
+}
+
+/* Header Action Buttons (Apple Pill Style) */
+.admin-storefront .ios-glass-btn,
+.admin-storefront .ios-glass-btn.btn-aurora,
+.admin-storefront .admin-header-glass form button.ios-glass-btn,
+.message-storefront .dashboard-header .cyber-glow-btn,
+.admin-storefront .fashion-shop-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 20px !important;
+    border-radius: var(--radius-pill, 9999px) !important;
+    background: var(--app-action-bg, #1d1d1f) !important;
+    color: var(--app-action-text, #ffffff) !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    text-decoration: none;
+    border: none !important;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all var(--duration-fast, 160ms) var(--ease-apple);
+}
+
+.admin-storefront .ios-glass-btn:hover,
+.admin-storefront .admin-header-glass form button.ios-glass-btn:hover,
+.message-storefront .dashboard-header .cyber-glow-btn:hover {
+    background: var(--app-action-hover, #333336) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+
+.admin-storefront .ios-glass-btn:active,
+.admin-storefront .admin-header-glass form button.ios-glass-btn:active {
+    transform: scale(0.98);
+}
+
+/* Secondary header links */
+.admin-storefront .admin-header-glass a:not(.ios-glass-btn):not(.brand-emblem) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--radius-pill, 9999px);
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.04));
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    color: var(--app-label-primary, #1d1d1f);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--duration-fast, 160ms);
+}
+
+.admin-storefront .admin-header-glass a:not(.ios-glass-btn):not(.brand-emblem):hover {
+    background: var(--app-surface-hover, rgba(0, 0, 0, 0.07));
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4. Metric Analytics Cards
+   ========================================================================== */
+.admin-storefront .analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.admin-storefront .analytics-card {
+    background: var(--app-surface-solid, #ffffff);
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: var(--card-shadow, 0 4px 16px rgba(0, 0, 0, 0.04));
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform var(--duration-fast, 160ms), box-shadow var(--duration-fast, 160ms);
+}
+
+.admin-storefront .analytics-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover, 0 12px 32px rgba(0, 0, 0, 0.08));
+}
+
+.admin-storefront .analytics-card span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--app-label-secondary, #6e6e73);
+}
+
+.admin-storefront .analytics-card strong {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--app-label-primary, #1d1d1f);
+    margin: 4px 0 2px;
+}
+
+.admin-storefront .analytics-card small {
+    font-size: 12px;
+    color: var(--app-label-tertiary, #86868b);
+}
+
+.admin-storefront .trend-up {
+    color: var(--app-success, #34c759) !important;
+}
+
+.admin-storefront .trend-down {
+    color: var(--app-danger, #ff3b30) !important;
+}
+
+/* ==========================================================================
+   5. Section Titles & Inset Grouped Tables
+   ========================================================================== */
+.admin-storefront .analytics-section {
+    margin-bottom: 32px;
+}
+
+.admin-storefront .analytics-section h3,
+.operations-section-heading h2,
+.order-review-heading h3 {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em !important;
+    color: var(--app-label-primary, #1d1d1f) !important;
+    font-family: inherit !important;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-storefront .admin-table-glass,
+.admin-storefront .analytics-table-wrap,
+.message-storefront .dashboard-table-card,
+.operations-section {
+    background: var(--app-surface-solid, #ffffff) !important;
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08)) !important;
+    border-radius: var(--radius-lg, 18px) !important;
+    box-shadow: var(--card-shadow, 0 4px 16px rgba(0, 0, 0, 0.04)) !important;
+    overflow: hidden;
+}
+
+.admin-storefront table,
+.message-storefront table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-storefront thead,
+.message-storefront thead {
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.03)) !important;
+    border-bottom: 1px solid var(--app-border, rgba(0, 0, 0, 0.08)) !important;
+}
+
+.admin-storefront th,
+.message-storefront th {
+    padding: 14px 18px;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--app-label-secondary, #6e6e73) !important;
+}
+
+.admin-storefront td,
+.message-storefront td {
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--app-label-primary, #1d1d1f);
+    border-bottom: 1px solid var(--app-border-subtle, rgba(0, 0, 0, 0.05));
+    transition: background-color var(--duration-fast, 160ms);
+}
+
+.admin-storefront tbody tr:hover td,
+.message-storefront tbody tr:hover td {
+    background-color: var(--app-surface-hover, rgba(0, 0, 0, 0.025));
+}
+
+.admin-storefront tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================================================
+   6. Inventory Alerts
+   ========================================================================== */
+.inventory-alert {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: var(--radius-lg, 18px);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    color: #92400e;
+}
+
+[data-theme="dark"] .inventory-alert {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: #fde68a;
+}
+
+.inventory-alert h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inventory-alert ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 13.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* ==========================================================================
+   7. Operations Tabs (Segmented Controls)
+   ========================================================================== */
+.operations-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.04));
+    padding: 4px;
+    border-radius: var(--radius-pill, 9999px);
+    border: 1px solid var(--app-border-subtle, rgba(0, 0, 0, 0.06));
+    margin-bottom: 20px;
+    border-bottom: none !important;
+}
+
+.operations-tabs a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--app-label-secondary, #6e6e73);
+    padding: 7px 16px;
+    border-radius: var(--radius-pill, 9999px);
+    transition: all var(--duration-fast, 160ms);
+    border: none !important;
+    min-height: 0 !important;
+}
+
+.operations-tabs a:hover {
+    color: var(--app-label-primary, #1d1d1f);
+}
+
+.operations-tabs a.is-active {
+    color: var(--app-label-primary, #1d1d1f);
+    background: var(--app-surface-solid, #ffffff);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   8. Form Layer & Overlays
+   ========================================================================== */
+.admin-form-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.admin-form-card {
+    background: var(--app-surface-solid, #ffffff);
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    border-radius: var(--radius-xl, 24px);
+    box-shadow: var(--modal-shadow, 0 24px 60px -12px rgba(0, 0, 0, 0.25));
+    width: 100%;
+    max-width: 680px;
+    padding: 36px 32px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.admin-form-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--app-label-primary, #1d1d1f);
+    margin-bottom: 6px;
+}
+
+.admin-form-card .form-description {
+    font-size: 14px;
+    color: var(--app-label-secondary, #6e6e73);
+    margin-bottom: 24px;
+}
+
+.admin-form-card .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.admin-form-card .form-group label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--app-label-secondary, #6e6e73);
+    margin-bottom: 6px;
+}
+
+.admin-form-card .cyber-input,
+.operations-container input,
+.operations-container select,
+.operations-container textarea {
+    width: 100%;
+    height: 42px;
+    padding: 0 14px;
+    border-radius: var(--radius-sm, 10px);
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.1));
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.04));
+    color: var(--app-label-primary, #1d1d1f);
+    font-size: 14.5px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all var(--duration-fast, 160ms);
+}
+
+.admin-form-card textarea.cyber-input,
+.operations-container textarea {
+    height: auto;
+    min-height: 90px;
+    padding: 10px 14px;
+}
+
+.admin-form-card .cyber-input:focus,
+.operations-container input:focus,
+.operations-container select:focus,
+.operations-container textarea:focus {
+    outline: none;
+    border-color: var(--app-accent, #0071e3);
+    background: var(--app-surface-solid, #ffffff);
+    box-shadow: 0 0 0 3px var(--app-accent-surface, rgba(0, 113, 227, 0.08));
+}
+
+/* ==========================================================================
+   9. Dark Mode Theme Mapping
+   ========================================================================== */
+[data-theme="dark"] .admin-primary-nav {
+    background: rgba(28, 28, 30, 0.85);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .admin-primary-brand {
+    color: #f5f5f7;
+}
+
+[data-theme="dark"] .admin-primary-brand .brand-hologram-cube {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .admin-primary-nav-link {
+    color: #a1a1a6;
+}
+
+[data-theme="dark"] .admin-primary-nav-link:hover {
+    color: #f5f5f7;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .admin-primary-nav-link.is-active {
+    background: #0071e3 !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .admin-settings-subnav {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .admin-settings-link {
+    color: #a1a1a6;
+}
+
+[data-theme="dark"] .admin-settings-link:hover {
+    color: #f5f5f7;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .admin-settings-link.is-active {
+    color: #2997ff;
+    background: rgba(41, 151, 255, 0.14);
+}
+
+[data-theme="dark"] .admin-sidebar-logout {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .admin-sidebar-logout button {
+    color: #a1a1a6;
+}
+
+[data-theme="dark"] .admin-sidebar-logout button:hover {
+    color: #ff453a;
+    background: rgba(255, 69, 58, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .admin-primary-nav {
+        position: static;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    }
+
+    .admin-storefront .admin-dashboard-container,
+    .message-storefront .dashboard-container {
+        width: 100%;
+        margin: 20px auto 40px;
+        padding: 0 16px;
+    }
+}
+
+/* ==========================================================================
+   10. Admin Sign-In Portal (Apple HIG Modal Card)
+   ========================================================================== */
+.admin-storefront .admin-login-wrap,
+.admin-login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--app-bg, #f5f5f7);
+    box-sizing: border-box;
+}
+
+.admin-storefront .admin-login-card,
+.admin-login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 32px;
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    border-radius: var(--radius-xl, 24px);
+    background: var(--app-surface-solid, #ffffff);
+    color: var(--app-label-primary, #1d1d1f);
+    box-shadow: var(--modal-shadow, 0 24px 60px -12px rgba(0, 0, 0, 0.18));
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    animation: modalSpringUp 0.3s var(--ease-spring, cubic-bezier(0.32, 0.72, 0, 1)) forwards;
+}
+
+.admin-login-card .brand-emblem {
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    text-decoration: none;
+}
+
+.admin-login-card .brand-hologram-cube {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md, 14px);
+    overflow: hidden;
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.04));
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--card-shadow, 0 2px 8px rgba(0, 0, 0, 0.04));
+}
+
+.admin-login-card .brand-hologram-cube img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-login-card h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--app-label-primary, #1d1d1f);
+    margin: 0 0 6px;
+    font-family: inherit;
+}
+
+.admin-login-card p {
+    font-size: 14px;
+    color: var(--app-label-secondary, #6e6e73);
+    line-height: 1.5;
+    margin: 0 0 24px;
+}
+
+.admin-login-error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--app-danger-bg, rgba(255, 59, 48, 0.1));
+    border: 1px solid rgba(255, 59, 48, 0.25);
+    color: var(--app-danger, #ff3b30);
+    padding: 12px 16px;
+    border-radius: var(--radius-md, 14px);
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left;
+    line-height: 1.45;
+}
+
+.admin-login-error i {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.admin-login-field {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.admin-login-card label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--app-label-secondary, #6e6e73);
+    margin-bottom: 6px;
+}
+
+.admin-login-card input[type="text"],
+.admin-login-card input[type="password"] {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.1));
+    border-radius: var(--radius-sm, 10px);
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.04));
+    color: var(--app-label-primary, #1d1d1f);
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all var(--duration-fast, 160ms) var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.admin-login-card input[type="text"]:focus,
+.admin-login-card input[type="password"]:focus {
+    outline: none;
+    border-color: var(--app-accent, #0071e3);
+    background: var(--app-surface-solid, #ffffff);
+    box-shadow: 0 0 0 3px var(--app-accent-surface, rgba(0, 113, 227, 0.08));
+}
+
+.admin-submit-btn {
+    width: 100%;
+    height: 46px;
+    margin-top: 8px;
+    border: none;
+    border-radius: var(--radius-pill, 9999px);
+    background: var(--app-action-bg, #1d1d1f);
+    color: var(--app-action-text, #ffffff);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--duration-fast, 160ms) var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-submit-btn:hover {
+    background: var(--app-action-hover, #333336);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.admin-submit-btn:active {
+    transform: scale(0.98);
+}
+
+.admin-login-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--app-border-subtle, rgba(0, 0, 0, 0.06));
+}
+
+/* ==========================================================================
+   Activity History Actions & Modal
+   ========================================================================== */
+.analytics-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn-clear-activity {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--app-danger, #ff3b30);
+    background: var(--app-danger-bg, rgba(255, 59, 48, 0.08));
+    border: 1px solid rgba(255, 59, 48, 0.22);
+    border-radius: var(--radius-pill, 9999px);
+    cursor: pointer;
+    transition: all var(--duration-fast, 160ms) var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1));
+    font-family: inherit;
+}
+
+.btn-clear-activity:hover:not(:disabled) {
+    background: var(--app-danger, #ff3b30);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(255, 59, 48, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-clear-activity:active:not(:disabled) {
+    transform: translateY(0);
+    opacity: 0.9;
+}
+
+.btn-clear-activity:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.scope-option-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    border: 1px solid var(--app-border, rgba(0, 0, 0, 0.1));
+    border-radius: var(--radius-md, 14px);
+    background: var(--app-surface-secondary, rgba(0, 0, 0, 0.03));
+    cursor: pointer;
+    transition: all var(--duration-fast, 160ms) var(--ease-apple, cubic-bezier(0.16, 1, 0.3, 1));
+    user-select: none;
+}
+
+.scope-option-card:hover {
+    border-color: var(--app-border-focus, rgba(0, 113, 227, 0.4));
+    background: var(--app-surface-hover, rgba(0, 0, 0, 0.05));
+}
+
+.scope-option-card:has(input:checked) {
+    border-color: var(--app-accent, #0071e3) !important;
+    background: var(--app-accent-surface, rgba(0, 113, 227, 0.08)) !important;
+}
+
+.scope-option-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--app-label-primary, #1d1d1f);
+}
+
+.scope-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill, 9999px);
+    background: var(--app-surface-tertiary, rgba(0, 0, 0, 0.06));
+    color: var(--app-label-secondary, #6e6e73);
+}
+
+.scope-badge.badge-danger {
+    background: var(--app-danger-bg, rgba(255, 59, 48, 0.12));
+    color: var(--app-danger, #ff3b30);
+}
+
+.scope-badge.badge-warning {
+    background: rgba(255, 149, 0, 0.12);
+    color: #ff9500;
+}
+
+.scope-badge.badge-success {
+    background: rgba(52, 199, 89, 0.12);
+    color: #34c759;
+}
+
+.admin-success-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 13px 18px;
+    border: 1px solid rgba(52, 199, 89, 0.3);
+    border-radius: var(--radius-md, 14px);
+    background: rgba(52, 199, 89, 0.12);
+    color: var(--app-success, #34c759);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.admin-success-banner i {
+    font-size: 17px;
+    flex-shrink: 0;
+}

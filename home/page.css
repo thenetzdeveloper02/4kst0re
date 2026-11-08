@@ -1,0 +1,1869 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   Apple Human Interface Guidelines Design System (4K STORE)
+   Crafted following Apple HIG & Studio Design Principles
+   ========================================================================== */
+
+:root {
+    /* Color Palette - Light Mode (Default) */
+    --app-bg: #f5f5f7;
+    --app-bg-secondary: #ffffff;
+    --app-surface: rgba(255, 255, 255, 0.82);
+    --app-surface-solid: #ffffff;
+    --app-surface-elevated: #ffffff;
+    --app-surface-secondary: rgba(0, 0, 0, 0.04);
+    --app-surface-hover: rgba(0, 0, 0, 0.06);
+    --app-surface-active: rgba(0, 0, 0, 0.1);
+
+    /* Labels & Content (Exceeds WCAG 2.1 AA 4.5:1) */
+    --app-label-primary: #1d1d1f;      /* 16.1:1 on white */
+    --app-label-secondary: #6e6e73;    /* 4.9:1 on white */
+    --app-label-tertiary: #86868b;
+    --app-label-quaternary: #aeaeb2;
+
+    /* Hairline Dividers & Outlines */
+    --app-border: rgba(0, 0, 0, 0.08);
+    --app-border-subtle: rgba(0, 0, 0, 0.05);
+    --app-border-strong: rgba(0, 0, 0, 0.16);
+
+    /* Apple Accents & System Tints */
+    --app-accent: #0071e3;            /* Apple System Blue */
+    --app-accent-hover: #0077ed;
+    --app-accent-surface: rgba(0, 113, 227, 0.08);
+    --app-action-bg: #1d1d1f;          /* High-contrast Apple black pill */
+    --app-action-text: #ffffff;
+    --app-action-hover: #333336;
+
+    /* Status & Signals */
+    --app-success: #34c759;           /* Apple System Green */
+    --app-success-bg: rgba(52, 199, 89, 0.12);
+    --app-danger: #ff3b30;            /* Apple System Red */
+    --app-danger-bg: rgba(255, 59, 48, 0.12);
+    --app-khqr-red: #e11928;          /* Official Bakong KHQR */
+
+    /* Liquid Glass Materials */
+    --glass-blur: blur(28px) saturate(180%);
+    --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --card-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --modal-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.15);
+
+    /* Continuous Squircle Radii */
+    --radius-pill: 9999px;
+    --radius-xl: 28px;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+
+    /* Spring Physics & Motion */
+    --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+    --duration-fast: 160ms;
+    --duration-normal: 240ms;
+}
+
+/* Dark Appearance (Apple Pure OLED & Elevated Charcoal) */
+[data-theme="dark"],
+body[data-theme="dark"] {
+    --app-bg: #000000;
+    --app-bg-secondary: #121214;
+    --app-surface: rgba(28, 28, 30, 0.78);
+    --app-surface-solid: #1c1c1e;
+    --app-surface-elevated: #2c2c2e;
+    --app-surface-secondary: rgba(255, 255, 255, 0.08);
+    --app-surface-hover: rgba(255, 255, 255, 0.12);
+    --app-surface-active: rgba(255, 255, 255, 0.16);
+
+    --app-label-primary: #f5f5f7;      /* 19.5:1 on black */
+    --app-label-secondary: #a1a1a6;    /* 7.3:1 on surface */
+    --app-label-tertiary: #86868b;
+    --app-label-quaternary: #48484a;
+
+    --app-border: rgba(255, 255, 255, 0.12);
+    --app-border-subtle: rgba(255, 255, 255, 0.08);
+    --app-border-strong: rgba(255, 255, 255, 0.22);
+
+    --app-accent: #2997ff;            /* Apple System Blue Vibrant */
+    --app-accent-hover: #47a6ff;
+    --app-accent-surface: rgba(41, 151, 255, 0.14);
+    --app-action-bg: #f5f5f7;          /* High-contrast Apple white pill */
+    --app-action-text: #000000;
+    --app-action-hover: #ffffff;
+
+    --app-success: #30d158;
+    --app-success-bg: rgba(48, 209, 88, 0.16);
+    --app-danger: #ff453a;
+    --app-danger-bg: rgba(255, 69, 58, 0.16);
+
+    --glass-shadow: 0 4px 28px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    --card-shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.55);
+    --modal-shadow: 0 28px 70px -10px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   CSS Reset & Base Rules
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--app-bg);
+}
+
+body {
+    background-color: var(--app-bg);
+    color: var(--app-label-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Outfit", "Kantumruy Pro", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    transition: background-color var(--duration-normal) var(--ease-apple), color var(--duration-normal) var(--ease-apple);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+    outline: 2px solid var(--app-accent);
+    outline-offset: 2px;
+}
+
+/* Clean Hide of Gimmick Artifacts */
+#dna-canvas,
+.canvas-overlay-vignette,
+.cyber-grid-lines,
+.qr-cyber-laser,
+#cyber-preloader {
+    display: none !important;
+}
+
+/* Container */
+.app-content-layer {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 36px);
+}
+
+/* ==========================================================================
+   1. Floating Liquid Glass Navigation Island (Apple HIG)
+   ========================================================================== */
+.cyber-nav-container {
+    position: sticky;
+    top: 16px;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+    pointer-events: none;
+}
+
+.cyber-island-nav {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 1140px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 0 20px;
+    background: var(--app-surface);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--glass-shadow);
+    transition: transform var(--duration-fast) var(--ease-apple), box-shadow var(--duration-fast) var(--ease-apple), background-color var(--duration-normal) var(--ease-apple);
+}
+
+/* Brand Emblem */
+.brand-emblem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity var(--duration-fast) var(--ease-apple);
+}
+
+.brand-emblem:hover {
+    opacity: 0.85;
+}
+
+.brand-hologram-cube {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--app-surface-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--app-border);
+}
+
+.brand-hologram-cube img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.brand-titles h1 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--app-label-primary);
+}
+
+.brand-titles span {
+    display: block;
+    font-size: 11.5px;
+    color: var(--app-label-secondary);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.dna-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--app-accent-surface);
+    color: var(--app-accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(0, 113, 227, 0.15);
+}
+
+/* Nav Hologram Links */
+.nav-hologram-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--app-surface-secondary);
+    padding: 3px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--app-border-subtle);
+}
+
+.nav-tab-btn {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--app-label-secondary);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    transition: all var(--duration-fast) var(--ease-apple);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.nav-tab-btn:hover {
+    color: var(--app-label-primary);
+    background: var(--app-surface-hover);
+}
+
+.nav-tab-btn.active {
+    color: var(--app-label-primary);
+    background: var(--app-surface-solid);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+/* Theme Switcher Control */
+.theme-mode-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.theme-mode-label {
+    display: none;
+}
+
+.theme-mode-control select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--app-border-subtle);
+    background: var(--app-surface-hover);
+    color: var(--app-label-primary);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 22px 5px 10px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%2386868b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    transition: background-color var(--duration-fast) var(--ease-apple);
+}
+
+.theme-mode-control select:hover {
+    background-color: var(--app-surface-active);
+}
+
+/* Nav Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notification-widget {
+    position: relative;
+    z-index: 20;
+}
+
+.notification-trigger {
+    position: relative;
+    min-width: 40px;
+    min-height: 38px;
+    padding: 7px 11px;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border: 2px solid var(--app-surface-solid);
+    border-radius: 999px;
+    background: #e5484d;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.notification-count[hidden],
+.notification-panel[hidden] {
+    display: none !important;
+}
+
+.notification-panel {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: min(360px, calc(100vw - 32px));
+    overflow: hidden;
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-lg);
+    background: var(--app-surface-solid);
+    color: var(--app-label-primary);
+    box-shadow: var(--modal-shadow);
+}
+
+.notification-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--app-border);
+}
+
+.notification-mark-all {
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    color: var(--app-accent);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.notification-mark-all:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}
+
+.notification-mark-all[hidden] {
+    display: none;
+}
+
+.notification-list {
+    max-height: min(420px, 60vh);
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: grid;
+    gap: 5px;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--app-border);
+    cursor: pointer;
+}
+
+.notification-item:last-child {
+    border-bottom: 0;
+}
+
+.notification-item:hover,
+.notification-item:focus-visible {
+    background: var(--app-surface-hover);
+}
+
+.notification-item.is-unread {
+    border-left: 3px solid var(--app-accent);
+    background: var(--app-accent-surface);
+}
+
+.notification-item-title {
+    font-size: 13px;
+}
+
+.notification-item-message {
+    color: var(--app-label-secondary);
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.notification-item-date,
+.notification-empty {
+    color: var(--app-label-tertiary);
+    font-size: 11px;
+}
+
+.notification-empty {
+    margin: 0;
+    padding: 20px 16px;
+    text-align: center;
+}
+
+.notification-error {
+    color: #c62828;
+}
+
+.notification-footer {
+    display: block;
+    padding: 11px 16px;
+    border-top: 1px solid var(--app-border);
+    color: var(--app-accent);
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.notification-widget-admin {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 1200;
+}
+
+.notification-widget-admin .notification-trigger {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--app-border);
+    border-radius: 50%;
+    background: var(--app-surface-solid);
+    color: var(--app-label-secondary);
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+}
+
+.notification-widget-admin .notification-panel {
+    top: calc(100% + 10px);
+}
+
+.cyber-glow-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    transition: all var(--duration-fast) var(--ease-apple);
+    cursor: pointer;
+    border: 1px solid var(--app-border);
+    background: var(--app-surface-secondary);
+    color: var(--app-label-primary);
+}
+
+.cyber-glow-btn:hover {
+    background: var(--app-surface-hover);
+    transform: translateY(-1px);
+}
+
+.cyber-glow-btn:active {
+    transform: scale(0.98);
+}
+
+/* Mobile Toggle */
+.mobile-nav-toggle {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--app-border);
+    background: var(--app-surface-secondary);
+    color: var(--app-label-primary);
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Mobile Drawer (iOS Sheet Style) */
+.mobile-menu-drawer,
+.mobile-menu-drawer[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 860px) {
+    .mobile-menu-drawer:not([hidden]) {
+        display: flex !important;
+        position: fixed;
+        top: 80px;
+        left: 16px;
+        right: 16px;
+        z-index: 999;
+        background: var(--app-surface);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--app-border);
+        border-radius: var(--radius-xl);
+        padding: 16px;
+        box-shadow: var(--modal-shadow);
+        flex-direction: column;
+        gap: 8px;
+        animation: drawerSlideDown 0.24s var(--ease-apple) forwards;
+    }
+}
+
+@keyframes drawerSlideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-menu-drawer .nav-tab-btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   2. Hero Showcase Deck (Apple Product Aesthetic)
+   ========================================================================== */
+.hero-deck {
+    margin-top: 36px;
+    margin-bottom: 48px;
+}
+
+.cyber-hud-bar {
+    display: none !important;
+}
+
+.hero-centerpiece {
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(32px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    align-items: center;
+    gap: 36px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: background-color var(--duration-normal) var(--ease-apple), border-color var(--duration-normal) var(--ease-apple);
+}
+
+.hero-centerpiece::after {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, var(--app-accent-surface) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-text-side {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--app-accent);
+    background: var(--app-accent-surface);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+}
+
+.hero-centerpiece h2 {
+    font-size: clamp(30px, 4.2vw, 48px);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.025em;
+    color: var(--app-label-primary);
+    margin-bottom: 14px;
+}
+
+.hero-centerpiece p {
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.6;
+    color: var(--app-label-secondary);
+    max-width: 580px;
+    margin-bottom: 28px;
+}
+
+.fashion-shop-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--app-action-bg);
+    color: var(--app-action-text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 13px 26px;
+    border-radius: var(--radius-pill);
+    transition: all var(--duration-fast) var(--ease-apple);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.fashion-shop-cta:hover {
+    background: var(--app-action-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+}
+
+.fashion-shop-cta:active {
+    transform: scale(0.98);
+}
+
+.hero-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--app-border-subtle);
+    flex-wrap: wrap;
+}
+
+.stat-chip {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--app-label-primary);
+}
+
+.stat-num span {
+    color: var(--app-accent);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--app-label-secondary);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.hero-visual-side {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 220px;
+}
+
+.hero-managed-banner {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: var(--radius-lg);
+    object-fit: contain;
+    box-shadow: var(--card-shadow);
+}
+
+.hero-brand-mark {
+    font-size: 90px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--app-surface-secondary);
+    user-select: none;
+    line-height: 0.9;
+}
+
+.hero-brand-caption {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--app-label-tertiary);
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   3. Search Bar & Segmented Filter Bar (Apple HIG Segmented Controls)
+   ========================================================================== */
+.catalog-header {
+    margin-bottom: 24px;
+}
+
+.catalog-heading-copy {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 28px;
+}
+
+.catalog-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--app-accent);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.catalog-heading-copy h2 {
+    font-size: clamp(24px, 3.5vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--app-label-primary);
+    margin-bottom: 8px;
+}
+
+.catalog-heading-copy p {
+    font-size: 15px;
+    color: var(--app-label-secondary);
+}
+
+/* Search and Controls Cluster */
+.catalog-filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.apple-search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.apple-search-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px 0 42px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--app-label-primary);
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: all var(--duration-fast) var(--ease-apple);
+}
+
+.apple-search-input:focus {
+    outline: none;
+    border-color: var(--app-accent);
+    box-shadow: 0 0 0 3px var(--app-accent-surface);
+}
+
+.apple-search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--app-label-tertiary);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+/* Native Segmented Filter Pill */
+.segmented-filter-bar {
+    display: inline-flex;
+    align-items: center;
+    background: var(--app-surface-secondary);
+    padding: 4px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--app-border-subtle);
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.segmented-filter-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.cyber-category-pill {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--app-label-secondary);
+    font-size: 13.5px;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 7px 18px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--duration-fast) var(--ease-apple);
+}
+
+.cyber-category-pill:hover {
+    color: var(--app-label-primary);
+}
+
+.cyber-category-pill.active {
+    color: var(--app-label-primary);
+    background: var(--app-surface-solid);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   4. Apple Store Product Cards Matrix
+   ========================================================================== */
+.cyber-cards-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 56px;
+}
+
+.cyber-card {
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--duration-normal) var(--ease-apple), box-shadow var(--duration-normal) var(--ease-apple), border-color var(--duration-normal) var(--ease-apple);
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--app-border-strong);
+}
+
+.card-top-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--app-success);
+    background: var(--app-success-bg);
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-hologram-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-md);
+    background: var(--app-surface-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid var(--app-border-subtle);
+}
+
+.card-hologram-frame img {
+    width: 82%;
+    height: 82%;
+    object-fit: contain;
+    transition: transform var(--duration-normal) var(--ease-apple);
+}
+
+.cyber-card:hover .card-hologram-frame img {
+    transform: scale(1.04);
+}
+
+.card-app-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--app-label-primary);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.card-feature-specs {
+    font-size: 12.5px;
+    color: var(--app-label-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.cyber-price-pill {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--app-label-primary);
+    margin-top: auto;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.cyber-price-pill span {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--app-label-tertiary);
+}
+
+.card-action-wrap {
+    width: 100%;
+}
+
+.cyber-buy-action {
+    width: 100%;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--app-action-bg);
+    color: var(--app-action-text);
+    border: none;
+    border-radius: var(--radius-pill);
+    font-size: 14.5px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--duration-fast) var(--ease-apple);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.cyber-buy-action:hover {
+    background: var(--app-action-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+
+.cyber-buy-action:active {
+    transform: scale(0.98);
+}
+
+.catalog-empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--app-label-secondary);
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   5. Capabilities & Trust Grid (Apple HIG Feature Columns)
+   ========================================================================== */
+.cyber-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 56px;
+}
+
+.cyber-trust-card {
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--duration-normal) var(--ease-apple), box-shadow var(--duration-normal) var(--ease-apple);
+}
+
+.cyber-trust-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.trust-glow-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--app-accent-surface);
+    color: var(--app-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.trust-texts h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--app-label-primary);
+    margin-bottom: 2px;
+}
+
+.trust-texts p {
+    font-size: 13px;
+    color: var(--app-label-secondary);
+}
+
+/* ==========================================================================
+   6. Payment Partners & Apple Footer
+   ========================================================================== */
+.cyber-footer {
+    border-top: 1px solid var(--app-border);
+    padding: 48px 0 40px;
+    text-align: center;
+}
+
+.cyber-footer h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--app-label-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.cyber-footer p {
+    color: var(--app-label-secondary);
+    margin: 0 auto 24px;
+    font-size: 14px;
+}
+
+.bank-capsules-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.bank-cyber-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--app-label-primary);
+    transition: transform var(--duration-fast) var(--ease-apple);
+}
+
+.bank-cyber-chip:hover {
+    transform: translateY(-1px);
+}
+
+.bank-cyber-chip img {
+    height: 22px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   7. Checkout Sheet & Modal (Apple HIG Modality & Sheets)
+   ========================================================================== */
+.buy-checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.buy-checkout-modal[hidden] {
+    display: none !important;
+}
+
+.checkout-cyber-card {
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 520px;
+    padding: 32px 28px;
+    box-shadow: var(--modal-shadow);
+    text-align: center;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSpringUp 0.3s var(--ease-spring) forwards;
+}
+
+@keyframes modalSpringUp {
+    from { opacity: 0; transform: scale(0.95) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.checkout-modal-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkout-modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--app-surface-secondary);
+    border: none;
+    color: var(--app-label-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-apple);
+}
+
+.checkout-modal-close:hover {
+    background: var(--app-surface-hover);
+    color: var(--app-label-primary);
+}
+
+.checkout-product-image {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 12px;
+    border-radius: var(--radius-md);
+}
+
+.checkout-cyber-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--app-label-primary);
+    letter-spacing: -0.015em;
+    margin-bottom: 4px;
+}
+
+.checkout-product-description {
+    font-size: 13.5px;
+    color: var(--app-label-secondary);
+    margin-bottom: 12px;
+}
+
+.checkout-product-price {
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+/* Coupon Inset Panel */
+.checkout-coupon-panel {
+    background: var(--app-surface-secondary);
+    border: 1px solid var(--app-border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.checkout-coupon-panel label {
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--app-label-secondary);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.checkout-coupon-row {
+    display: flex;
+    gap: 8px;
+}
+
+.checkout-coupon-row input {
+    flex: 1;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--app-border);
+    background: var(--app-surface-solid);
+    color: var(--app-label-primary);
+    font-size: 14px;
+}
+
+.checkout-coupon-row button {
+    width: auto;
+    padding: 0 16px;
+    height: 38px;
+    font-size: 13px;
+}
+
+.checkout-coupon-status {
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.checkout-coupon-status[data-state="success"] { color: var(--app-success); }
+.checkout-coupon-status[data-state="error"] { color: var(--app-danger); }
+
+/* QR Frame & Instructions */
+.qr-cyber-frame {
+    width: 200px;
+    height: 200px;
+    margin: 16px auto;
+    border-radius: var(--radius-lg);
+    background: #ffffff;
+    padding: 12px;
+    border: 1px solid var(--app-border);
+    box-shadow: var(--card-shadow);
+}
+
+.qr-cyber-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.checkout-payment-instructions {
+    background: var(--app-accent-surface);
+    border: 1px solid rgba(0, 113, 227, 0.15);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--app-label-primary);
+    text-align: left;
+    line-height: 1.5;
+}
+
+.checkout-payment-instructions div {
+    font-weight: 700;
+    color: var(--app-accent);
+    margin-bottom: 4px;
+}
+
+/* Inset Grouped Order Form (iOS Settings Form Pattern) */
+.checkout-order-form {
+    text-align: left;
+    margin-top: 18px;
+}
+
+.checkout-order-form label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--app-label-secondary);
+    margin-bottom: 6px;
+    margin-top: 12px;
+}
+
+.checkout-order-form input[type="text"],
+.checkout-order-form input[type="tel"] {
+    width: 100%;
+    height: 42px;
+    padding: 0 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--app-border);
+    background: var(--app-surface-secondary);
+    color: var(--app-label-primary);
+    font-size: 14.5px;
+    font-family: inherit;
+    transition: all var(--duration-fast) var(--ease-apple);
+}
+
+.checkout-order-form input:focus {
+    outline: none;
+    border-color: var(--app-accent);
+    background: var(--app-surface-solid);
+    box-shadow: 0 0 0 3px var(--app-accent-surface);
+}
+
+/* File Upload Zone */
+.checkout-receipt-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 20px;
+    border: 2px dashed var(--app-border-strong);
+    border-radius: var(--radius-md);
+    background: var(--app-surface-secondary);
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--duration-fast) var(--ease-apple);
+    margin-top: 6px;
+}
+
+.checkout-receipt-upload:hover {
+    border-color: var(--app-accent);
+    background: var(--app-accent-surface);
+}
+
+.checkout-receipt-upload i {
+    font-size: 24px;
+    color: var(--app-accent);
+}
+
+.checkout-receipt-upload span {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--app-label-primary);
+}
+
+.checkout-receipt-upload small {
+    font-size: 11.5px;
+    color: var(--app-label-secondary);
+}
+
+.checkout-receipt-input {
+    display: none;
+}
+
+.checkout-receipt-filename {
+    display: block;
+    font-size: 12px;
+    color: var(--app-label-tertiary);
+    margin-top: 6px;
+    text-align: center;
+}
+
+.checkout-order-status {
+    margin: 12px 0;
+    font-size: 13px;
+    text-align: center;
+}
+
+.checkout-order-status[data-state="error"] { color: var(--app-danger); font-weight: 600; }
+
+.checkout-telegram-action {
+    margin-top: 14px;
+    height: 48px;
+    font-size: 15px;
+}
+
+.checkout-delivery-note {
+    font-size: 12px;
+    color: var(--app-label-tertiary);
+    margin-top: 14px;
+}
+
+/* ==========================================================================
+   8. Success Notification Dialog (Apple Alert Dialog)
+   ========================================================================== */
+.cyber-notify-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cyber-notify-overlay[hidden] {
+    display: none !important;
+}
+
+.cyber-notify-card {
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-xl);
+    padding: 32px 24px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--modal-shadow);
+    animation: alertPop 0.26s var(--ease-spring) forwards;
+}
+
+@keyframes alertPop {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.cyber-notify-icon {
+    font-size: 48px;
+    color: var(--app-success);
+    margin-bottom: 12px;
+}
+
+.cyber-notify-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--app-label-primary);
+    margin-bottom: 8px;
+}
+
+.cyber-notify-card p {
+    font-size: 14px;
+    color: var(--app-label-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   9. About Page & Information Cards (Apple Editorial Cleanliness)
+   ========================================================================== */
+.about-cyber-layer {
+    max-width: 980px;
+    margin: 32px auto 64px;
+    padding: 0 16px;
+}
+
+.about-section,
+.about-hero,
+.about-contact {
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(28px, 4vw, 44px);
+    margin-bottom: 24px;
+    box-shadow: var(--card-shadow);
+}
+
+.about-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--app-accent);
+    background: var(--app-accent-surface);
+    border-radius: var(--radius-pill);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.about-section-heading {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 32px;
+}
+
+.about-section-heading span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--app-accent);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.about-section-heading h3 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--app-label-primary);
+    margin-bottom: 8px;
+}
+
+.about-section-heading p {
+    font-size: 15px;
+    color: var(--app-label-secondary);
+    line-height: 1.6;
+}
+
+.about-story-grid,
+.about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.about-info-card,
+.about-value-card {
+    background: var(--app-surface-secondary);
+    border: 1px solid var(--app-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    transition: transform var(--duration-fast) var(--ease-apple);
+}
+
+.about-info-card:hover,
+.about-value-card:hover {
+    transform: translateY(-2px);
+}
+
+.about-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--app-accent-surface);
+    color: var(--app-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+.about-info-card h4,
+.about-value-card h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--app-label-primary);
+    margin-bottom: 8px;
+}
+
+.about-info-card p,
+.about-value-card p {
+    font-size: 13.5px;
+    color: var(--app-label-secondary);
+    line-height: 1.65;
+}
+
+.about-contact {
+    text-align: center;
+}
+
+.about-contact h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--app-label-primary);
+    margin: 12px 0 8px;
+}
+
+.about-contact p {
+    font-size: 15px;
+    color: var(--app-label-secondary);
+    max-width: 600px;
+    margin: 0 auto 24px;
+}
+
+.about-page-footer {
+    text-align: center;
+    color: var(--app-label-tertiary);
+    font-size: 12.5px;
+    padding-top: 16px;
+}
+
+/* ==========================================================================
+   10. Scroll To Top Floating Button
+   ========================================================================== */
+#cyberScrollTop {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 990;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--app-surface-solid);
+    border: 1px solid var(--app-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--app-label-primary);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-apple);
+}
+
+#cyberScrollTop:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* ==========================================================================
+   11. Responsive Media Queries
+   ========================================================================== */
+@media (max-width: 860px) {
+    .nav-hologram-links {
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        display: flex;
+    }
+
+    .hero-centerpiece {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+    }
+
+    .hero-visual-side {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .cyber-island-nav {
+        height: 54px;
+        padding: 0 12px 0 16px;
+    }
+
+    .brand-titles span {
+        display: none;
+    }
+
+    .cyber-cards-matrix {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .checkout-cyber-card {
+        padding: 24px 18px;
+        border-radius: var(--radius-lg);
+    }
+}
+
+.customer-orders-widget {
+    position: relative;
+    z-index: 20;
+}
+
+.customer-orders-trigger {
+    position: relative;
+    min-width: 40px;
+    min-height: 38px;
+    padding: 7px 11px;
+}
+
+.customer-orders-panel[hidden] {
+    display: none !important;
+}
+
+.customer-orders-panel {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: min(390px, calc(100vw - 32px));
+    overflow: hidden;
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-lg);
+    background: var(--app-surface-solid);
+    color: var(--app-label-primary);
+    box-shadow: var(--modal-shadow);
+}
+
+.customer-orders-panel .notification-panel-heading > span {
+    color: var(--app-label-tertiary);
+    font-size: 11px;
+}
+
+.customer-orders-list {
+    max-height: min(460px, 65vh);
+    overflow-y: auto;
+}
+
+.customer-order-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--app-border);
+}
+
+.customer-order-item:last-child {
+    border-bottom: 0;
+}
+
+.customer-order-image {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-sm);
+    background: var(--app-surface-secondary);
+    object-fit: cover;
+}
+
+.customer-order-details {
+    display: grid;
+    min-width: 0;
+    gap: 4px;
+    color: var(--app-label-secondary);
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.customer-order-name {
+    overflow-wrap: anywhere;
+    color: var(--app-label-primary);
+    font-size: 13px;
+}
+
+.customer-order-status {
+    width: fit-content;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--app-accent-surface);
+    color: var(--app-accent);
+    font-weight: 600;
+}
+
+.customer-order-status.is-success {
+    background: var(--app-success-bg);
+    color: var(--app-success);
+}
+
+.customer-order-status.is-cancelled {
+    background: var(--app-danger-bg);
+    color: var(--app-danger);
+}
+
+.customer-order-delivery-failed,
+.customer-order-admin-delivery,
+.customer-order-received,
+.customer-order-action-error {
+    width: fit-content;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--app-danger-bg);
+    color: var(--app-danger);
+    font-weight: 600;
+}
+
+.customer-order-admin-delivery {
+    background: var(--app-accent-surface);
+    color: var(--app-accent);
+}
+
+.customer-order-received {
+    background: var(--app-success-bg);
+    color: var(--app-success);
+}
+
+.customer-order-action-error {
+    padding: 0;
+    background: transparent;
+    font-size: 11px;
+}
+
+.customer-order-payment {
+    color: var(--app-label-secondary);
+}
+
+.customer-order-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 7px;
+}
+
+.customer-order-action {
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-pill);
+    background: var(--app-surface-secondary);
+    color: var(--app-label-primary);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.customer-order-received-button {
+    border-color: transparent;
+    background: var(--app-accent);
+    color: #fff;
+}
+
+.customer-order-action:hover:not(:disabled) {
+    filter: brightness(0.94);
+}
+
+.customer-order-action:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.customer-order-contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 12px;
+    margin-top: 3px;
+}
+
+.customer-order-contact-links[hidden] {
+    display: none;
+}
+
+.customer-order-contact-links a {
+    color: var(--app-accent);
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.customer-order-contact-links a:hover {
+    text-decoration: underline;
+}
+
+.customer-order-received {
+    line-height: 1.4;
+}

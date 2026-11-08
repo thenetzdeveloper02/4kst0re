@@ -1,0 +1,15 @@
+/* ==========================================================================
+   4K STORE - Apple HIG Clean Theme Bridge
+   This file harmonizes with page.css to maintain consistent Apple HIG tokens.
+   ========================================================================== */
+
+.fashion-storefront {
+    color-scheme: light dark;
+}
+
+/* Ensure no legacy conflicting overrides */
+.fashion-storefront .cyber-grid-lines,
+.fashion-storefront .canvas-overlay-vignette,
+.fashion-storefront #dna-canvas {
+    display: none !important;
+}
